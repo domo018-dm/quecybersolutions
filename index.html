@@ -36,6 +36,8 @@
   ::selection { background:rgba(85,224,205,0.25); }
   input::placeholder, textarea::placeholder { color:#5b6068; }
   a { color:inherit; }
+  html, body { overflow-x:hidden; max-width:100%; }
+  img, svg, textarea, input { max-width:100%; }
 
   @keyframes qcsPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.82)} }
   @keyframes qcsPop { from{opacity:0;transform:scale(.88)} to{opacity:1;transform:scale(1)} }
@@ -59,6 +61,23 @@
   .err { color:#ff8a80; font-size:13px; margin-top:4px; font-family:'IBM Plex Mono',monospace; }
   .navphone { display:none; }
   @media (min-width:680px) { .navphone { display:inline-flex; } }
+
+  /* ── Mobile layer ───────────────────────────────────────────────── */
+  @media (max-width:560px) {
+    .hero { padding-top:48px !important; padding-bottom:40px !important; }
+    .hero-h1 { font-size:32px !important; letter-spacing:-0.8px !important; }
+    .br-sm { display:none; }                 /* let the headline wrap naturally */
+    .hero-sub { font-size:16px !important; margin-top:18px !important; }
+    .hero-eyebrow { font-size:11px !important; letter-spacing:1.6px !important; }
+    .hero-cta { flex-direction:column; align-items:stretch; gap:10px; margin-top:28px !important; }
+    .cta-btn { width:100%; }
+    nav { padding:14px 18px !important; }
+    .nav-cta { padding:9px 14px !important; font-size:13px !important; }
+  }
+  @media (max-width:360px) {
+    .hero-h1 { font-size:29px !important; }
+    .brand { font-size:14px !important; }
+  }
 </style>
 </head>
 <body>
@@ -66,27 +85,27 @@
 
   <!-- NAV -->
   <nav style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,56px);backdrop-filter:blur(12px);background:rgba(6,6,7,0.6);border-bottom:1px solid rgba(255,255,255,0.06)">
-    <a href="#top" class="mono" style="display:flex;align-items:baseline;gap:1px;font-size:15px;letter-spacing:-0.2px;text-decoration:none">
+    <a href="#top" class="mono brand" style="display:flex;align-items:baseline;gap:1px;font-size:15px;letter-spacing:-0.2px;text-decoration:none">
       <span style="color:#f4f5f6;font-weight:500">que</span><span style="color:var(--accent);font-weight:500">cyber</span><span style="color:#8b9097">solutions</span>
     </a>
     <div style="display:flex;align-items:center;gap:14px">
       <a href="tel:+15052049009" class="mono navlink navphone" style="align-items:center;font-size:13.5px;color:#c9ccd1;text-decoration:none;letter-spacing:0.3px">(505) 204-9009</a>
-      <a href="#qcs-intake" class="btn-accent" style="font-size:14px;font-weight:600;color:#04110f;background:var(--accent);border:none;border-radius:9px;padding:10px 18px;cursor:pointer;text-decoration:none">Start a project</a>
+      <a href="#qcs-intake" class="btn-accent nav-cta" style="font-size:14px;font-weight:600;color:#04110f;background:var(--accent);border:none;border-radius:9px;padding:10px 18px;cursor:pointer;text-decoration:none">Start a project</a>
     </div>
   </nav>
 
   <span id="top"></span>
 
   <!-- HERO -->
-  <header style="max-width:980px;margin:0 auto;padding:clamp(64px,11vw,120px) clamp(20px,5vw,56px) clamp(48px,7vw,80px);text-align:center">
-    <div class="mono" style="display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#8b9097">
+  <header class="hero" style="max-width:980px;margin:0 auto;padding:clamp(64px,11vw,120px) clamp(20px,5vw,56px) clamp(48px,7vw,80px);text-align:center">
+    <div class="mono hero-eyebrow" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 9px;max-width:100%;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#8b9097">
       <span>Custom software</span><span style="color:var(--accent);opacity:.7">·</span><span>Applications</span><span style="color:var(--accent);opacity:.7">·</span><span>Websites</span>
     </div>
-    <h1 style="margin:26px 0 0;font-size:clamp(40px,7vw,72px);line-height:1.02;letter-spacing:-1.8px;font-weight:600;text-wrap:balance">We build the software<br>your business runs on.</h1>
-    <p style="margin:26px auto 0;max-width:600px;font-size:clamp(16px,2.2vw,19px);line-height:1.55;color:#a9adb4;text-wrap:pretty">Custom applications, internal tools, and websites — designed, built, and shipped by a team that's accountable to you. From the first call to launch.</p>
-    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;margin-top:38px">
-      <a href="#qcs-intake" class="btn-accent" style="font-size:16px;font-weight:600;color:#04110f;background:var(--accent);border:none;border-radius:11px;padding:15px 28px;cursor:pointer;text-decoration:none">Start a project →</a>
-      <a href="tel:+15052049009" class="outline" style="display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:500;color:#f4f5f6;text-decoration:none;border:1px solid rgba(255,255,255,0.14);border-radius:11px;padding:15px 24px;transition:border-color .15s">
+    <h1 class="hero-h1" style="margin:26px 0 0;font-size:clamp(40px,7vw,72px);line-height:1.02;letter-spacing:-1.8px;font-weight:600;text-wrap:balance">We build the software <br class="br-sm">your business runs on.</h1>
+    <p class="hero-sub" style="margin:26px auto 0;max-width:600px;font-size:clamp(16px,2.2vw,19px);line-height:1.55;color:#a9adb4;text-wrap:pretty">Custom applications, internal tools, and websites — designed, built, and shipped by a team that's accountable to you. From the first call to launch.</p>
+    <div class="hero-cta" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;margin-top:38px">
+      <a href="#qcs-intake" class="btn-accent cta-btn" style="font-size:16px;font-weight:600;color:#04110f;background:var(--accent);border:none;border-radius:11px;padding:15px 28px;cursor:pointer;text-decoration:none">Start a project →</a>
+      <a href="tel:+15052049009" class="outline cta-btn" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:500;color:#f4f5f6;text-decoration:none;border:1px solid rgba(255,255,255,0.14);border-radius:11px;padding:15px 24px;transition:border-color .15s">
         <span style="color:var(--accent)">Call</span> (505) 204-9009
       </a>
     </div>
@@ -151,7 +170,7 @@
   // the inbox that should receive inquiries — they email you the key. Paste
   // it below. Until a real key is set, the form gracefully falls back to
   // opening the visitor's email client (mailto).
-  var WEB3FORMS_ACCESS_KEY = "REPLACE_WITH_WEB3FORMS_KEY";
+  var WEB3FORMS_ACCESS_KEY = "1b068d78-9d41-4d06-abbf-b65ff36709e0";
 
   var CONTACT_EMAIL = "hello@quecybersolutions.com";
   var CONTACT_PHONE_DISPLAY = "(505) 204-9009";
