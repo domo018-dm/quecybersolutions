@@ -59,12 +59,21 @@
   .navlink:hover { color:#f4f5f6; }
   .footlink:hover { color:var(--accent); }
   .err { color:#ff8a80; font-size:13px; margin-top:4px; font-family:'IBM Plex Mono',monospace; }
+  .err a { color:var(--accent); }
+
+  /* Full-length hero: fill the viewport below the sticky nav, content centered */
+  .hero {
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    min-height:calc(100vh - 61px);
+    min-height:calc(100dvh - 61px);
+  }
+
   .navphone { display:none; }
   @media (min-width:680px) { .navphone { display:inline-flex; } }
 
   /* ── Mobile layer ───────────────────────────────────────────────── */
   @media (max-width:560px) {
-    .hero { padding-top:48px !important; padding-bottom:40px !important; }
+    .hero { min-height:calc(100svh - 52px); padding-top:36px !important; padding-bottom:36px !important; }
     .hero-h1 { font-size:32px !important; letter-spacing:-0.8px !important; }
     .br-sm { display:none; }                 /* let the headline wrap naturally */
     .hero-sub { font-size:16px !important; margin-top:18px !important; }
@@ -97,7 +106,7 @@
   <span id="top"></span>
 
   <!-- HERO -->
-  <header class="hero" style="max-width:980px;margin:0 auto;padding:clamp(64px,11vw,120px) clamp(20px,5vw,56px) clamp(48px,7vw,80px);text-align:center">
+  <header class="hero" style="max-width:980px;margin:0 auto;padding:48px clamp(20px,5vw,56px);text-align:center">
     <div class="mono hero-eyebrow" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 9px;max-width:100%;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#8b9097">
       <span>Custom software</span><span style="color:var(--accent);opacity:.7">·</span><span>Applications</span><span style="color:var(--accent);opacity:.7">·</span><span>Websites</span>
     </div>
@@ -369,7 +378,8 @@
           + '<span style="font-size:15px;line-height:1.45;color:#e6e8ea">' + esc(a[k]) + '</span></div>';
       });
       html += '</div>';
-      if (state.error) html += '<div class="err" style="margin-top:12px">' + esc(state.error) + '</div>';
+      if (state.error) html += '<div class="err" style="margin-top:12px">' + esc(state.error)
+        + ' <a href="' + esc(buildMailto()) + '">Email us directly →</a></div>';
       html += '<button data-send class="btn-accent" ' + (state.sending ? "disabled" : "") + ' style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:18px;font-size:16px;font-weight:600;color:#04110f;background:var(--accent);border:none;border-radius:12px;padding:16px;cursor:pointer">'
         + (state.sending
             ? '<span style="width:16px;height:16px;border:2px solid rgba(4,17,15,0.35);border-top-color:#04110f;border-radius:50%;display:inline-block;animation:qcsSpin .7s linear infinite"></span> Sending…'
