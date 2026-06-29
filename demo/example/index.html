@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rio Grande Roasters · Small-batch coffee, Albuquerque</title>
+<meta name="description" content="Small-batch coffee roasted in the valley. (Sample demo site by QueCyberSolutions.)">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#2b1d12; --cream:#f7f1e7; --card:#fffdf9; --accent:#c0612b; --muted:#7a6a58; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--cream); color:var(--ink); font-family:'Inter', system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 24px; }
+  .serif { font-family:'Fraunces', Georgia, serif; }
+  a { color:inherit; }
+  .btn { display:inline-block; font-weight:600; font-size:15px; padding:13px 22px; border-radius:999px; text-decoration:none; transition:transform .12s, background .15s; }
+  .btn:active { transform:translateY(1px); }
+  .btn-solid { background:var(--accent); color:#fff; }
+  .btn-solid:hover { background:#a8521f; }
+  .btn-ghost { border:1px solid rgba(43,29,18,0.18); color:var(--ink); }
+  .btn-ghost:hover { border-color:var(--ink); }
+
+  nav { position:sticky; top:0; z-index:20; background:rgba(247,241,231,0.85); backdrop-filter:blur(10px); border-bottom:1px solid rgba(43,29,18,0.08); }
+  nav .wrap { display:flex; align-items:center; justify-content:space-between; height:66px; }
+  .brand { font-family:'Fraunces',serif; font-weight:600; font-size:20px; letter-spacing:-0.3px; text-decoration:none; }
+  .brand b { color:var(--accent); }
+  .navlinks { display:flex; gap:26px; align-items:center; font-size:15px; }
+  .navlinks a { text-decoration:none; color:var(--muted); }
+  .navlinks a:hover { color:var(--ink); }
+  .navlinks .hideable { display:none; }
+  @media (min-width:760px){ .navlinks .hideable { display:inline; } }
+
+  header.hero { padding:clamp(56px,9vw,104px) 0; }
+  .eyebrow { font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); font-weight:600; }
+  h1 { font-size:clamp(40px,7vw,76px); line-height:1.02; letter-spacing:-1.5px; margin-top:18px; max-width:14ch; }
+  header p { margin-top:22px; font-size:clamp(17px,2.2vw,20px); color:var(--muted); max-width:52ch; line-height:1.55; }
+  .hero-cta { margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; }
+
+  .strip { background:var(--ink); color:var(--cream); }
+  .strip .wrap { display:flex; flex-wrap:wrap; gap:28px; justify-content:space-between; padding-top:18px; padding-bottom:18px; font-size:14px; letter-spacing:0.3px; }
+  .strip b { color:#e9a06a; }
+
+  section.roasts { padding:clamp(56px,8vw,96px) 0; }
+  .sec-head { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .sec-head h2 { font-size:clamp(28px,4vw,42px); letter-spacing:-0.8px; }
+  .grid { margin-top:36px; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+  .card { background:var(--card); border:1px solid rgba(43,29,18,0.08); border-radius:18px; padding:26px; box-shadow:0 12px 40px -28px rgba(43,29,18,0.5); }
+  .card .dot { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; }
+  .card h3 { font-family:'Fraunces',serif; font-size:22px; margin-top:18px; }
+  .card .price { float:right; color:var(--accent); font-weight:600; font-family:'Fraunces',serif; }
+  .card p { margin-top:8px; color:var(--muted); font-size:14.5px; line-height:1.55; }
+
+  section.visit { padding:0 0 clamp(56px,8vw,96px); }
+  .visit-card { background:var(--ink); color:var(--cream); border-radius:24px; padding:clamp(32px,5vw,56px); display:grid; grid-template-columns:1fr; gap:30px; }
+  @media (min-width:720px){ .visit-card { grid-template-columns:1.1fr 1fr; align-items:center; } }
+  .visit-card h2 { font-family:'Fraunces',serif; font-size:clamp(26px,3.6vw,38px); letter-spacing:-0.5px; }
+  .visit-card p { margin-top:14px; color:#d9cdbd; line-height:1.6; }
+  .hours { list-style:none; font-size:15px; }
+  .hours li { display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px solid rgba(247,241,231,0.12); }
+  .hours li:last-child { border-bottom:none; }
+  .hours b { color:#e9a06a; }
+
+  footer { border-top:1px solid rgba(43,29,18,0.1); padding:34px 0 60px; }
+  footer .wrap { display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center; color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="#top">Rio Grande <b>Roasters</b></a>
+      <div class="navlinks">
+        <a class="hideable" href="#roasts">Coffee</a>
+        <a class="hideable" href="#visit">Visit</a>
+        <a class="btn btn-solid" href="#visit" style="padding:9px 16px;font-size:14px">Order ahead</a>
+      </div>
+    </div>
+  </nav>
+
+  <span id="top"></span>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Albuquerque · Est. 2014</div>
+      <h1 class="serif">Small-batch coffee, roasted in the valley.</h1>
+      <p>We source single-origin beans, roast them in small drums on Fourth Street, and pull every shot like it matters — because it does.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#roasts">See our roasts</a>
+        <a class="btn btn-ghost" href="#visit">Visit the café →</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="strip">
+    <div class="wrap">
+      <span>☕ <b>Roasted</b> weekly on-site</span>
+      <span>🌱 <b>Single-origin</b> &amp; seasonal blends</span>
+      <span>📍 <b>1412 Fourth St SW</b>, Albuquerque</span>
+    </div>
+  </div>
+
+  <section class="roasts" id="roasts">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">On the menu</div>
+          <h2 class="serif">This week's roasts</h2>
+        </div>
+        <a class="btn btn-ghost" href="#visit">Full menu in store</a>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="dot" style="background:#f3e2d2">🫘</div>
+          <h3 class="serif">Valley Dawn <span class="price">$17</span></h3>
+          <p>Our flagship medium roast — milk chocolate, toasted pecan, and a soft caramel finish. The everyday cup.</p>
+        </div>
+        <div class="card">
+          <div class="dot" style="background:#efd9c4">🌅</div>
+          <h3 class="serif">Ethiopia Guji <span class="price">$21</span></h3>
+          <p>Light and bright single-origin — blueberry, jasmine, and a clean citrus snap. A pour-over favorite.</p>
+        </div>
+        <div class="card">
+          <div class="dot" style="background:#e7c9ad">🌑</div>
+          <h3 class="serif">Midnight on 4th <span class="price">$18</span></h3>
+          <p>A bold dark roast for the espresso machine — dark cocoa, molasses, and a thick, syrupy crema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="visit-card">
+        <div>
+          <h2>Come sit a while.</h2>
+          <p>Find us in the South Valley, two blocks off the bosque trail. Order ahead and we'll have it waiting — or stay, and let it be the slow part of your day.</p>
+          <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn btn-solid" href="tel:+15055551412">Call to order</a>
+            <a class="btn btn-ghost" style="color:var(--cream);border-color:rgba(247,241,231,0.3)" href="#top">Get directions</a>
+          </div>
+        </div>
+        <ul class="hours">
+          <li><span>Mon – Fri</span><b>6:30a – 6:00p</b></li>
+          <li><span>Saturday</span><b>7:00a – 7:00p</b></li>
+          <li><span>Sunday</span><b>7:00a – 2:00p</b></li>
+          <li><span>Phone</span><b>(505) 555-1412</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span class="serif" style="font-size:17px;color:var(--ink)">Rio Grande <b style="color:var(--accent)">Roasters</b></span>
+      <span>© 2026 Rio Grande Roasters · Albuquerque, NM</span>
+    </div>
+  </footer>
+
+  <!-- Preview badge — links back to QueCyberSolutions -->
+  <a href="https://quecybersolutions.com" target="_blank" rel="noopener"
+     style="position:fixed;right:14px;bottom:14px;z-index:99999;display:inline-flex;align-items:center;gap:7px;font:600 12px/1 'Inter',system-ui,sans-serif;color:#04110f;background:#55e0cd;border-radius:999px;padding:9px 13px;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.45)">
+    <span style="font-size:10px">◆</span> Preview by QueCyberSolutions
+  </a>
+
+</body>
+</html>
