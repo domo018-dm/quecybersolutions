@@ -108,7 +108,7 @@
   <!-- HERO -->
   <header class="hero" style="max-width:980px;margin:0 auto;padding:48px clamp(20px,5vw,56px);text-align:center">
     <div class="mono hero-eyebrow" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 9px;max-width:100%;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#8b9097">
-      <span>Custom software</span><span style="color:var(--accent);opacity:.7">·</span><span>Applications</span><span style="color:var(--accent);opacity:.7">·</span><span>Websites</span>
+      <span>Custom software</span><span style="color:var(--accent);opacity:.7">·</span><span>Applications</span><span style="color:var(--accent);opacity:.7">·</span><span>Websites</span><span style="color:var(--accent);opacity:.7">·</span><span style="color:var(--accent)">Security</span>
     </div>
     <h1 class="hero-h1" style="margin:26px 0 0;font-size:clamp(40px,7vw,72px);line-height:1.02;letter-spacing:-1.8px;font-weight:600;text-wrap:balance">We build the software <br class="br-sm">your business runs on.</h1>
     <p class="hero-sub" style="margin:26px auto 0;max-width:600px;font-size:clamp(16px,2.2vw,19px);line-height:1.55;color:#a9adb4;text-wrap:pretty">Custom applications, internal tools, and websites — designed, built, and shipped by a team that's accountable to you. From the first call to launch.</p>
@@ -125,7 +125,7 @@
   </header>
 
   <!-- CAPABILITIES -->
-  <section style="max-width:980px;margin:0 auto;padding:0 clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+  <section style="max-width:980px;margin:0 auto;padding:0 clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
     <div style="border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px 22px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)">
       <div class="mono" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent)">01</div>
       <div style="margin-top:14px;font-size:18px;font-weight:600;letter-spacing:-0.3px">Custom software</div>
@@ -140,6 +140,14 @@
       <div class="mono" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent)">03</div>
       <div style="margin-top:14px;font-size:18px;font-weight:600;letter-spacing:-0.3px">Websites</div>
       <div style="margin-top:7px;font-size:14px;line-height:1.5;color:#8b9097">Sites that load instantly, rank well, and make your business look serious.</div>
+    </div>
+    <div style="border:1px solid rgba(85,224,205,0.35);border-radius:16px;padding:24px 22px;background:linear-gradient(180deg,rgba(85,224,205,0.06),transparent)">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+        <div class="mono" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent)">04</div>
+        <span class="mono" style="font-size:9.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#04110f;background:var(--accent);border-radius:5px;padding:3px 7px">Our priority</span>
+      </div>
+      <div style="margin-top:14px;font-size:18px;font-weight:600;letter-spacing:-0.3px">Security</div>
+      <div style="margin-top:7px;font-size:14px;line-height:1.5;color:#8b9097">We audit your existing software or site for vulnerabilities — and build everything we ship secure from day one.</div>
     </div>
   </section>
 
@@ -170,9 +178,38 @@
         <a href="tel:+15052049009" class="mono footlink" style="font-size:16px;color:#f4f5f6;text-decoration:none;transition:color .15s">(505) 204-9009</a>
       </div>
     </div>
-    <div class="mono" style="margin-top:40px;font-size:11.5px;letter-spacing:0.5px;color:#5b6068">© 2026 QueCyberSolutions · Albuquerque, NM</div>
+    <div class="mono" style="margin-top:40px;font-size:11.5px;letter-spacing:0.5px;color:#5b6068">© 2026 QueCyberSolutions · Albuquerque, NM · <a href="#" id="qcs-cookie-reopen" class="footlink" style="color:#5b6068;text-decoration:none;transition:color .15s">Cookie preferences</a></div>
   </footer>
 </div>
+
+<!-- COOKIE CONSENT (defaults to necessary-only; nothing non-essential loads unless "Accept all") -->
+<div id="qcs-cookie" role="dialog" aria-label="Cookie consent" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;max-width:540px;margin:0 auto;border:1px solid rgba(255,255,255,0.12);border-radius:16px;background:rgba(13,15,18,0.97);backdrop-filter:blur(12px);box-shadow:0 24px 70px -24px rgba(0,0,0,0.85);padding:18px 20px">
+  <div style="font-size:13.5px;line-height:1.55;color:#c9ccd1">We use only the cookies needed to make this site work. With your okay, we'd also use a few to understand traffic — never for ads. <a href="mailto:hello@quecybersolutions.com" class="footlink" style="color:var(--accent);text-decoration:none">Questions?</a></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px">
+    <button id="qcs-cookie-nec" class="ghost" style="flex:1;min-width:140px;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;color:#c9ccd1;background:transparent;border:1px solid rgba(255,255,255,0.16);border-radius:10px;padding:11px 16px;cursor:pointer">Only necessary</button>
+    <button id="qcs-cookie-all" class="btn-accent" style="flex:1;min-width:140px;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#04110f;background:var(--accent);border:none;border-radius:10px;padding:11px 16px;cursor:pointer">Accept all</button>
+  </div>
+</div>
+
+<script>
+// Cookie consent — defaults to "necessary"; non-essential scripts (e.g. future
+// analytics) should gate on window.qcsConsent === 'all' before loading.
+(function () {
+  var KEY = 'qcs-cookie-consent';
+  var el = document.getElementById('qcs-cookie');
+  if (!el) return;
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function decide(v) { try { localStorage.setItem(KEY, v); } catch (e) {} window.qcsConsent = v; el.style.display = 'none'; }
+  window.qcsConsent = read() || 'necessary';   // default before any choice: necessary only
+  if (!read()) el.style.display = 'block';
+  var nec = document.getElementById('qcs-cookie-nec');
+  var all = document.getElementById('qcs-cookie-all');
+  var re = document.getElementById('qcs-cookie-reopen');
+  if (nec) nec.addEventListener('click', function () { decide('necessary'); });
+  if (all) all.addEventListener('click', function () { decide('all'); });
+  if (re) re.addEventListener('click', function (e) { e.preventDefault(); el.style.display = 'block'; });
+})();
+</script>
 
 <script>
 (function () {
