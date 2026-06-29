@@ -233,6 +233,11 @@
       ] });
     }
 
+    s.push({ key: "contactPref", kind: "choice", title: "Prefer a call or email?", subtitle: "However's easiest for you.", options: [
+      { v: "Email", label: "Email", desc: "We'll reply to your inbox" },
+      { v: "Call", label: "A phone call", desc: "We'll give you a ring" },
+      { v: "Either", label: "Either works", desc: "Whatever's most convenient" }
+    ] });
     s.push({ key: "contact", kind: "contact", title: "How can we reach you?", subtitle: "We usually reply within ~15 minutes." });
     s.push({ key: "review", kind: "review", title: "Look good?", subtitle: "Send it over and we'll be in touch shortly." });
     return s;
@@ -252,9 +257,9 @@
 
   function labelFor(k) {
     return ({ clientType: "Client", need: "Project", details: "Details", timeline: "Timeline",
-      urgency: "Urgency", name: "Name", email: "Email", phone: "Phone" })[k] || k;
+      urgency: "Urgency", contactPref: "Reach via", name: "Name", email: "Email", phone: "Phone" })[k] || k;
   }
-  var FIELD_ORDER = ["clientType", "need", "details", "timeline", "urgency", "name", "email", "phone"];
+  var FIELD_ORDER = ["clientType", "need", "details", "timeline", "urgency", "contactPref", "name", "email", "phone"];
 
   function buildMailto() {
     var a = state.answers, lines = [];
@@ -266,11 +271,20 @@
 
   function validEmail(s) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || "").trim()); }
 
+  // Returns {field, msg} for the first problem with the contact details, or null.
+  function contactError() {
+    var a = state.answers;
+    if (!(a.name || "").trim()) return { field: "name", msg: "Please add your name." };
+    if (!validEmail(a.email)) return { field: "email", msg: "Please add a valid email." };
+    if (a.contactPref === "Call" && !(a.phone || "").trim()) return { field: "phone", msg: "Add a phone number so we can call you." };
+    return null;
+  }
+
   // ─── Submit (Web3Forms with mailto fallback) ───────────────────────────
   function submit() {
     var a = state.answers;
-    if (!a.name || !a.name.trim()) { state.error = "Please add your name."; state.index = contactIndex(); render(); return; }
-    if (!validEmail(a.email)) { state.error = "Please add a valid email."; state.index = contactIndex(); render(); return; }
+    var ce = contactError();
+    if (ce) { state.error = ce.msg; state.index = contactIndex(); render(); focusField(ce.field); return; }
 
     var keyMissing = !WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY.indexOf("REPLACE_WITH") === 0;
     if (keyMissing) { // graceful fallback until a real key is configured
@@ -360,10 +374,11 @@
     } else if (step.kind === "text") {
       html += '<textarea data-field="' + esc(step.key) + '" placeholder="' + esc(step.placeholder || "") + '" rows="5" class="fld" style="resize:vertical;line-height:1.5;' + S.field + '">' + esc(state.answers[step.key] || "") + '</textarea>';
     } else if (step.kind === "contact") {
+      var phonePh = state.answers.contactPref === "Call" ? "Phone number" : "Phone (optional)";
       html += '<div style="display:flex;flex-direction:column;gap:12px">'
         + '<input data-field="name" placeholder="Your name" class="fld" style="' + S.field + '" value="' + esc(state.answers.name || "") + '">'
         + '<input data-field="email" type="email" placeholder="Email address" class="fld" style="' + S.field + '" value="' + esc(state.answers.email || "") + '">'
-        + '<input data-field="phone" type="tel" placeholder="Phone (optional)" class="fld" style="' + S.field + '" value="' + esc(state.answers.phone || "") + '">'
+        + '<input data-field="phone" type="tel" placeholder="' + phonePh + '" class="fld" style="' + S.field + '" value="' + esc(state.answers.phone || "") + '">'
         + '</div>';
       if (state.error) html += '<div class="err">' + esc(state.error) + '</div>';
     } else if (step.kind === "review") {
@@ -432,8 +447,8 @@
     var nextBtn = card.querySelector("[data-next]");
     if (nextBtn) nextBtn.addEventListener("click", function () {
       if (step.kind === "contact") {
-        if (!(state.answers.name || "").trim()) { state.error = "Please add your name."; render(); focusField("name"); return; }
-        if (!validEmail(state.answers.email)) { state.error = "Please add a valid email."; render(); focusField("email"); return; }
+        var ce = contactError();
+        if (ce) { state.error = ce.msg; render(); focusField(ce.field); return; }
       }
       next();
     });
